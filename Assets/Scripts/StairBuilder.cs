@@ -9,7 +9,8 @@ public class StairBuilder : MonoBehaviour
     [SerializeField] private Transform placeToBuild;
     [SerializeField] private Transform parent;
     [SerializeField] private int goalStepCount = 28;
-    private int _currentStepCount;
+    [SerializeField] private GameObject stepParticle; 
+    private int _currentStepCount; 
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +21,7 @@ public class StairBuilder : MonoBehaviour
             newStep.parent = parent;
             newStep.localEulerAngles = Vector3.zero;
             newStep.position = placeToBuild.position;
+            Instantiate(stepParticle, placeToBuild.position, Quaternion.identity);
 
             transform.position += (Vector3) offset;
             if (_currentStepCount >= goalStepCount)

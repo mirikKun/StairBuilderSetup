@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class Victory : MonoBehaviour
 {
-    [SerializeField] private GameObject victoryMenu;
+    [SerializeField] private Menu menu;
 
+    [SerializeField] private GameObject boom;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Backpack>())
         {
-            victoryMenu.SetActive(true);
+            Instantiate(boom, other.transform.position, Quaternion.identity);
+            menu.Victory();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }

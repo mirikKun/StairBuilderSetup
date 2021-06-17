@@ -18,6 +18,7 @@ public class Backpack : MonoBehaviour
         if (stepBackpack.Count > 0)
         {
             Transform next = stepBackpack.Pop();
+            DOTween.KillAll();
             _currentHeight -= distance;
             return next;
         }
